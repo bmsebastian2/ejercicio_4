@@ -1,9 +1,24 @@
+import express from "express";
+import cors from "cors";
+import bodyParser from "body-parser";
+import { makeConexion } from "./utils/conexionMongoose.mjs";
 import { routerApiUser } from "./apiUser.mjs";
-import app from "./server.mjs";
 import * as url from "url";
 import bodyParser from "body-parser";
+
+
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.use(cors());
+
+app.use(express.static("utils"));
+app.use(express.static("public"));
+app.use(express.static("views"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
 const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 
 app.get("/", (req, res) => {
@@ -11,3 +26,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/users", routerApiUser);
+makeConexion();
+
+app.listen(PORT, () => {
+  console.log("Your app is listening on port " + PORT);
+});
