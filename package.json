@@ -1,13 +1,13 @@
 {
   "name": "accessmongoose",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.1.0",
+  "description": "A REST API project, part of Free Code Camp's curriculum",
+  "author": "Sebastian Benitez",
   "main": "index.mjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.mjs"
   },
   "keywords": [],
-  "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.2",
