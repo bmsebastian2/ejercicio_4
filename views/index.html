@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sebastian BM | freeCodeCamp</title>
+    <link rel="shortcut icon" href="https://cdn.freecodecamp.org/universal/favicons/favicon.ico" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css" />
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="div1 rack">
+            <h2>Rastreador de ejercicio 😎</h2>
+        </div>
+
+        <div class="div4 rack">
+            <form action="/api/users" method="post">
+                <h3>Nuevo Usuario</h3>
+                <input type="text" placeholder="USERNAME" name="username" />
+                <button type="submit">Enviar User</button>
+            </form>
+        </div>
+
+        <div class="div5 rack">
+            <form action="/api/users/:_id/exercises" id="exercise-form" method="post">
+                <h3>Agregar ejercicio</h3>
+                <input id="uid" name="_id" type="text" required placeholder="ID" />
+                <input name="description" required type="text" placeholder="DESCRIPTION" />
+                <input name="duration" required type="number" placeholder="DURATION(MINS)" />
+                <input name='date' type="date" placeholder="DATE (YYYY-MM-DD)" />
+                <button type="submit">Enviar ejercicio</button>
+            </form>
+        </div>
+
+        <div class="div2 rack">
+            <p>by: bmsebastian2@gmail.com</p>
+        </div>
+        <!-- <div class="div3 rack">
+            <p>by: bmsebastian2@gmail.com</p>
+        </div> -->
+    </div>
+
+    <!-- <script>
+        const exerciseForm = document.getElementById("exercise-form");
+
+        exerciseForm.addEventListener("submit", () => {
+            const userId = document.getElementById("uid").value;
+            exerciseForm.action = `/api/users/${userId}/exercises`;
+
+            exerciseForm.submit();
+        });
+    </script> -->
+</body>
+</html>

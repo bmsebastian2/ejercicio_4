@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: monospace;
+
+
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+
+}
+
+input {
+    margin: 0.3rem;
+    padding: 0.3rem;
+    border: 1px solid rgb(151, 151, 245);
+    border-radius: 5px;
+}
+
+button {
+    max-width: 6rem;
+    padding: 0.2rem;
+    margin: 0.2rem auto;
+}
+
+.rack {
+    border: 0.5px solid rgb(187, 186, 186);
+    margin: 0.5rem;
+    padding: 0.5rem;
+}
