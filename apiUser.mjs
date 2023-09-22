@@ -1,9 +1,8 @@
 import express from "express";
-import { findAllUsers, findUserById, findLogsById } from "../utils/find.mjs";
-import { AddNewExcercis } from "../utils/exercisesCrud.mjs";
-import { addUser } from "../utils/userCrud.mjs";
-import { NewLog } from "../utils/logCrud.mjs";
-
+import { findAllUsers, findUserById, findLogsById } from "./utils/find.mjs";
+import { AddNewExcercis } from "./utils/exercisesCrud.mjs";
+import { addUser } from "./utils/userCrud.mjs";
+import { NewLog } from "./utils/logCrud.mjs";
 
 routerApiUser.get("/", (req, res) => {
   findAllUsers().then((result) => {
