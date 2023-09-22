@@ -1,7 +1,7 @@
+import { routerApiUser } from "./apiUser.mjs";
 import app from "./server.mjs";
 import * as url from "url";
 import bodyParser from "body-parser";
-import { routerApiUser } from "./apiUser.mjs";
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
