@@ -5,7 +5,6 @@ import bodyParser from "body-parser";
 import { makeConexion } from "./utils/conexionMongoose.mjs";
 import { routerApiUser } from "./apiUser.mjs";
 import * as url from "url";
-import bodyParser from "body-parser";
 
 const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 
