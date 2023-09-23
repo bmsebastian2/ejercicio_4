@@ -4,6 +4,8 @@ import { AddNewExcercis } from "./utils/exercisesCrud.mjs";
 import { addUser } from "./utils/userCrud.mjs";
 import { NewLog } from "./utils/logCrud.mjs";
 
+const routerApiUser = express.Router();
+
 routerApiUser.get("/", (req, res) => {
   findAllUsers().then((result) => {
     res.send(result);
@@ -42,7 +44,7 @@ routerApiUser.get("/:_id/logs", (req, res) => {
   });
 });
 
-export const routerApiUser = express.Router();
+export default routerApiUser;
 
 function formatoFecha(date) {
   return (date ? new Date(`${date}T00:00:00`) : new Date()).toDateString();
