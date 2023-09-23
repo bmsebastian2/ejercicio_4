@@ -18,11 +18,12 @@ app.use(express.static("views"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+routerApiUser.use("/api/users");
+
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/views/index.html");
 });
 
-app.use("/api/users", routerApiUser);
 makeConexion();
 
 app.listen(PORT, () => {
