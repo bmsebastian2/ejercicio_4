@@ -3,15 +3,13 @@ import mongoose from "mongoose";
 
 const schemaUser = {
   username: String,
-  _id: String,
 };
 
 const schemaExercise = {
-  username: String,
+  user_id: { type: String, require: true },
   description: String,
   duration: Number,
-  date: String,
-  _id: String,
+  date: Date,
 };
 const logSchema = mongoose.Schema(
   {
@@ -36,5 +34,3 @@ export const listSchema = {
   exercise: makeSchame(schemaExercise),
   log: makeSchame(schemaLogs),
 };
-
-

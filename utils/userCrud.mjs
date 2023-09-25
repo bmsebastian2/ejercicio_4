@@ -1,10 +1,14 @@
 import { listModel } from "./models.mjs";
-import { ObjectId } from "mongodb";
 
-export const addUser = (name) =>
-  listModel
-    .user({
-      _id: new ObjectId(),
-      username: name,
-    })
-    .save();
+export const addUser = async (name, res) => {
+  try {
+    const user = await listModel
+      .user({
+        username: name,
+      })
+      .save();
+    res.json(user);
+  } catch (error) {
+    console.log("Error addUser: ", error);
+  }
+};

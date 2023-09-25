@@ -16,7 +16,7 @@ app.use(express.static("utils"));
 app.use(express.static("public"));
 app.use(express.static("views"));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 app.use("/api/users", routerApiUser);
 
 app.get("/", (req, res) => {

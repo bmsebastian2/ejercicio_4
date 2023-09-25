@@ -1,21 +1,31 @@
 import { listModel } from "./models.mjs";
 const { exercise } = listModel;
 
-export const AddNewExcercis = (user, body, fecha, id) => {
-  const { description, duration } = body;
-  const { _id, username } = user;
-
-  const filter = { _id: id };
+export const AddNewExcercis = async (
+  description,
+  duration,
+  date,
+  user,
+  res
+) => {
   const update = {
-    _id,
-    username,
-    date: fecha,
-    duration,
+    user_id: user._id,
     description,
+    duration,
+    date: date ? new Date(date) : new Date(),
   };
-  return exercise.findOneAndUpdate(filter, update, {
-    new: true,
-    upsert: true,
-  });
+  try {
+    const exerciseSend = await exercise(update).save();
+    res.json({
+      _id: user._id,
+      username: user.username,
+      description: exerciseSend.description,
+      duration: exerciseSend.duration,
+      date: new Date(exerciseSend.date).toDateString(),
+    });
+  } catch (error) {
+    console.log("Error en AddNewExcercis : ", error);
+    res.send("Error send exercises: ", error);
+  }
 };
 //Lo busca si lo encuentra lo actualiza sino lo agrega
