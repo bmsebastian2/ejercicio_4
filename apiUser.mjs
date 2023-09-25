@@ -24,13 +24,18 @@ routerApiUser.post("/:_id/exercises", async (req, res) => {
     const user = await findUserById(_id);
     if (user) {
       const fecha = formatoFecha(body.date);
-      const exerci = await AddNewExcercis(user, body, fecha, _id);
-      await NewLog(exerci);
-      //const { username } = user;
-      const { date, duration, description } = exerci;
-      //const newObject = { date, duration, description };
-      //console.log(user._doc);
-      res.json({ ...user._doc, date, duration, description });
+
+      if (fecha) {
+        const exerci = await AddNewExcercis(user, body, fecha, _id);
+        await NewLog(exerci);
+        //const { username } = user;
+        const { date, duration, description } = exerci;
+        //const newObject = { date, duration, description };
+        //console.log(user._doc);
+        res.json({ ...user._doc, date, duration, description });
+      } else {
+        res.send("ERROR CON LA FECHA");
+      }
     } else {
       res.send("_ID de usuario no existe");
     }
@@ -49,5 +54,26 @@ routerApiUser.get("/:_id/logs", (req, res) => {
 });
 
 function formatoFecha(date) {
-  return (date ? new Date(`${date}T00:00:00`) : new Date()).toDateString();
+  if (date === "") return new Date().toDateString();
+  if (isDateNew(date)) {
+    let newDate = new Date(`${date}T00:00:00`);
+    return newDate === "Invalid Date" ? false : newDate.toDateString();
+  } else {
+    return false;
+  }
+}
+
+function isDateNew(value) {
+  switch (typeof value) {
+    case "number":
+      return true;
+    case "string":
+      return !isNaN(Date.parse(value));
+    case "object":
+      if (value instanceof Date) {
+        return !isNaN(value.getTime());
+      }
+    default:
+      return false;
+  }
 }
