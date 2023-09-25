@@ -26,7 +26,10 @@ routerApiUser.post("/:_id/exercises", async (req, res) => {
       const fecha = formatoFecha(body.date);
       const exerci = await AddNewExcercis(user, body, fecha, _id);
       await NewLog(exerci);
-      res.json(exerci);
+      const { username } = user;
+      const { date, duration, description } = exerci;
+      const newObject = { _id, username, date, duration, description };
+      res.json(newObject);
     } else {
       res.send("_ID de usuario no existe");
     }
