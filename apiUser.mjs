@@ -34,12 +34,6 @@ routerApiUser.post("/:_id/exercises", async (req, res) => {
         if (fecha) {
           AddNewExcercis(description, duration, date, user, res);
 
-          //await NewLog(exerci);
-          //const { username } = user;
-          //const { date, duration, description } = exerci;
-          //const newObject = { date, duration, description };
-          //console.log(user._doc);
-          // res.json({ ...user._doc, date, duration, description });
         } else {
           res.send("ERROR CON LA FECHA");
         }
@@ -88,13 +82,7 @@ routerApiUser.get("/:_id/logs", async (req, res) => {
     _id: user._id,
     log,
   });
-  // findLogsById(_id).then((register) => {
-  //   if (register === null) {
-  //     res.send("_ID no se encuentra");
-  //   } else {
-  //     res.json(register);
-  //   }
-  // });
+ 
 });
 
 function formatoFecha(date) {
