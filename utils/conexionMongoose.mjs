@@ -8,6 +8,7 @@ export const makeConexion = () => {
   mongoose
     //.connect(`mongodb://${server}/${database}`)
     .connect(uri)
+    
     .then(() => {
       console.log("Database connection successful");
     })

@@ -84,6 +84,7 @@ routerApiUser.get("/:_id/logs", async (req, res) => {
   res.json({
     username: user.username,
     count: exercises.length,
+    _id: user._id,
     log,
   });
   // findLogsById(_id).then((register) => {
