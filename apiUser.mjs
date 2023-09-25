@@ -69,7 +69,6 @@ routerApiUser.get("/:_id/logs", async (req, res) => {
   if (from || to) {
     filter.date = dateObject;
   }
-  //const exercises = await findExcercises(filter, limit);
   const exercises = await listModel.exercise.find(filter).limit(+limit ?? 500);
   const log = exercises.map((e) => ({
     description: e.description,
@@ -77,9 +76,9 @@ routerApiUser.get("/:_id/logs", async (req, res) => {
     date: e.date.toDateString(),
   }));
   res.json({
-    _id: user._id,
     username: user.username,
     count: exercises.length,
+    _id: user._id,
     log,
   });
  
