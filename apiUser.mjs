@@ -29,14 +29,14 @@ routerApiUser.post("/:_id/exercises", async (req, res) => {
       const user = await findUserById(id);
       console.log("user:", user);
       if (user) {
-        const fecha = formatoFecha(date);
+        //const fecha = formatoFecha(date);
 
-        if (fecha) {
-          AddNewExcercis(description, duration, date, user, res);
+        AddNewExcercis(description, duration, date, user, res);
+        // if (fecha) {
 
-        } else {
-          res.send("ERROR CON LA FECHA");
-        }
+        // } else {
+        //   res.send("ERROR CON LA FECHA");
+        // }
       } else {
         res.send("_ID de usuario no existe");
       }
