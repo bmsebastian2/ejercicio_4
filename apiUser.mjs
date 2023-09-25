@@ -2,7 +2,7 @@ import express from "express";
 import { findAllUsers, findUserById, findExcercises } from "./utils/find.mjs";
 import { AddNewExcercis } from "./utils/exercisesCrud.mjs";
 import { addUser } from "./utils/userCrud.mjs";
-import { NewLog } from "./utils/logCrud.mjs";
+import { listModel } from "./utils/models.mjs";
 
 export const routerApiUser = express.Router();
 
@@ -75,7 +75,8 @@ routerApiUser.get("/:_id/logs", async (req, res) => {
   if (from || to) {
     filter.date = dateObject;
   }
-  const exercises = await findExcercises(filter, limit);
+  //const exercises = await findExcercises(filter, limit);
+  const exercises = await listModel.exercise(filter).limit(+limit ?? 500);
   const log = exercises.map((e) => ({
     description: e.description,
     duration: e.duration,
